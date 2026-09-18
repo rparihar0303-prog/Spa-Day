@@ -4,8 +4,9 @@ import {
   Wind,
   HandHeart,
   Droplets,
-  ArrowUpRight,
 } from 'lucide-react';
+import Container from '@/components/ui/Container';
+import SectionLabel from '@/components/ui/SectionLabel';
 
 interface Benefit {
   icon: typeof Sparkles;
@@ -51,43 +52,35 @@ export default function WhyChoose() {
   return (
     <section
       id="why-choose"
-      className="relative overflow-hidden bg-[#f3eee7] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-spa-cream py-16 md:py-20 lg:py-24"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+      <Container>
         {/* Section Heading */}
-        <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid items-end gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease }}
           >
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#ad895b]" />
-
-              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#9b754c]">
-                Why Spa Day
-              </span>
+            <div className="mb-4">
+              <SectionLabel label="Why Spa Day" />
             </div>
 
-            <h2 className="max-w-2xl font-serif text-[2.8rem] font-light leading-[0.98] tracking-[-0.04em] text-[#24211e] sm:text-6xl lg:text-[5rem]">
-              Care that begins
-              <br />
-              with{' '}
-              <em className="text-[#a77c4c]">
-                quiet.
-              </em>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.12] tracking-tight text-spa-charcoal">
+              Care that begins <br />
+              with <em className="font-light italic text-spa-gold-dark">quiet.</em>
             </h2>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.12, ease }}
+            transition={{ duration: 0.8, delay: 0.1, ease }}
             className="max-w-md lg:pb-2"
           >
-            <p className="text-sm leading-[1.9] text-[#24211e]/60 sm:text-base">
+            <p className="text-sm sm:text-base leading-relaxed text-spa-text-secondary">
               We focus on the atmosphere, personal attention, and thoughtful
               details that turn every treatment into a moment of calm.
             </p>
@@ -99,11 +92,11 @@ export default function WhyChoose() {
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.25, ease }}
-          className="mt-12 h-px origin-left bg-[#24211e]/15 sm:mt-16"
+          transition={{ duration: 0.9, delay: 0.2, ease }}
+          className="mt-10 sm:mt-12 h-px origin-left bg-spa-sand"
         />
 
-        {/* Benefit Cards */}
+        {/* 4-Pillar Arcade */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
@@ -111,78 +104,70 @@ export default function WhyChoose() {
             return (
               <motion.article
                 key={benefit.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{
                   duration: 0.7,
-                  delay: index * 0.1,
+                  delay: index * 0.08,
                   ease,
                 }}
-                whileHover={{ y: -6 }}
-                className={`group relative min-h-[255px] border border-[#24211e]/10 bg-[#f8f5f0] p-6 transition-all duration-500 hover:border-[#ad895b]/50 hover:bg-[#fcfaf7] hover:shadow-[0_18px_45px_rgba(60,45,30,0.08)] sm:p-7 lg:min-h-[285px] lg:border-y-0 lg:border-l-0 lg:p-8 ${
+                className={`group relative flex flex-col justify-between border border-spa-sand/70 bg-white/70 p-6 sm:p-7 transition-all duration-400 hover:bg-white hover:shadow-[0_12px_32px_rgba(27,25,23,0.06)] lg:border-y-0 lg:border-l-0 lg:bg-transparent lg:p-7 xl:p-8 ${
                   index === benefits.length - 1
                     ? 'lg:border-r-0'
-                    : 'lg:border-r'
+                    : 'lg:border-r lg:border-spa-sand'
                 }`}
               >
-                {/* Top Row */}
-                <div className="mb-8 flex items-start justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#ad895b]/40 bg-[#f3eee7] transition-all duration-500 group-hover:rotate-6 group-hover:bg-[#ad895b]">
-                    <Icon
-                      size={20}
-                      strokeWidth={1.2}
-                      className="text-[#a77c4c] transition-colors duration-500 group-hover:text-white"
-                    />
+                <div>
+                  {/* Top Row */}
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-spa-gold/40 bg-spa-cream/60 transition-colors duration-400 group-hover:border-spa-gold group-hover:bg-spa-gold">
+                      <Icon
+                        size={18}
+                        strokeWidth={1.3}
+                        className="text-spa-gold-dark transition-colors duration-400 group-hover:text-spa-ivory"
+                      />
+                    </div>
+
+                    <span className="font-serif text-base text-spa-gold-dark/80 font-normal">
+                      {benefit.number}
+                    </span>
                   </div>
 
-                  <span className="font-serif text-xl text-[#a77c4c]/70">
-                    {benefit.number}
-                  </span>
+                  {/* Title & Description */}
+                  <h3 className="font-serif text-xl sm:text-2xl font-normal leading-snug text-spa-charcoal">
+                    {benefit.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm font-light leading-relaxed text-spa-text-secondary">
+                    {benefit.description}
+                  </p>
                 </div>
 
-                {/* Content */}
-                <h3 className="max-w-[210px] font-serif text-[1.5rem] leading-[1.1] text-[#24211e]">
-                  {benefit.title}
-                </h3>
-
-                <p className="mt-4 max-w-[240px] text-sm leading-[1.75] text-[#24211e]/55">
-                  {benefit.description}
-                </p>
-
-                {/* Hover Arrow */}
-                <div className="absolute bottom-6 right-6 flex h-8 w-8 items-center justify-center rounded-full border border-[#24211e]/10 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
-                  <ArrowUpRight
-                    size={15}
-                    strokeWidth={1.2}
-                    className="text-[#a77c4c]"
-                  />
-                </div>
-
-                {/* Bottom Gold Line */}
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#ad895b] transition-all duration-700 group-hover:w-full" />
+                {/* Bottom Gold Line Indicator */}
+                <span className="mt-6 block h-[1.5px] w-0 bg-spa-gold transition-all duration-500 ease-out group-hover:w-full" />
               </motion.article>
             );
           })}
         </div>
 
-        {/* Small Bottom Statement */}
+        {/* Bottom Statement */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3, ease }}
-          className="mt-10 flex flex-col gap-3 border-t border-[#24211e]/15 pt-6 sm:flex-row sm:items-center sm:justify-between"
+          transition={{ duration: 0.8, delay: 0.25, ease }}
+          className="mt-10 flex flex-col gap-3 border-t border-spa-sand pt-6 sm:flex-row sm:items-center sm:justify-between"
         >
-          <p className="font-serif text-xl italic text-[#24211e]/70 sm:text-2xl">
+          <p className="font-serif text-lg sm:text-xl italic text-spa-charcoal/80">
             A space to slow down, breathe, and be you.
           </p>
 
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#9b754c]">
+          <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-spa-gold-dark">
             More than a spa
           </span>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }
