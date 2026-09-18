@@ -1,4 +1,3 @@
-import { type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface SectionHeadingProps {
@@ -8,6 +7,7 @@ interface SectionHeadingProps {
   align?: 'left' | 'center';
   light?: boolean;
   italic?: boolean;
+  className?: string;
 }
 
 export default function SectionHeading({
@@ -17,38 +17,49 @@ export default function SectionHeading({
   align = 'center',
   light = false,
   italic = false,
+  className = '',
 }: SectionHeadingProps) {
   return (
     <motion.div
-      className={`flex flex-col gap-5 max-w-2xl ${
+      className={`flex flex-col gap-3.5 sm:gap-4 max-w-2xl ${
         align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left'
-      }`}
-      initial={{ opacity: 0, y: 24 }}
+      } ${className}`}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
+      {/* Eyebrow kicker */}
       <div className="flex items-center gap-3">
-        <span className={`h-px w-7 ${light ? 'bg-gold-light/50' : 'bg-gold/50'}`} />
         <span
-          className={`text-[11px] font-medium uppercase tracking-wide-label ${
-            light ? 'text-gold-light' : 'text-gold-dark'
+          className={`h-px w-8 shrink-0 ${
+            light ? 'bg-spa-gold-light/60' : 'bg-spa-gold/70'
+          }`}
+          aria-hidden="true"
+        />
+        <span
+          className={`text-[11px] font-medium uppercase tracking-[0.24em] ${
+            light ? 'text-spa-gold-light' : 'text-spa-gold-dark'
           }`}
         >
           {label}
         </span>
       </div>
+
+      {/* Main title */}
       <h2
-        className={`text-[2rem] md:text-4xl lg:text-5xl font-light leading-[1.15] text-balance ${
-          light ? 'text-ivory' : 'text-charcoal'
+        className={`font-serif text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.12] tracking-tight text-balance ${
+          light ? 'text-spa-ivory' : 'text-spa-charcoal'
         }`}
       >
         {italic ? <em className="font-light italic">{title}</em> : title}
       </h2>
+
+      {/* Subtitle with high-contrast, readable typography */}
       {subtitle && (
         <p
-          className={`text-base font-light leading-relaxed ${
-            light ? 'text-ivory/65' : 'text-charcoal/55'
+          className={`text-sm sm:text-base font-light leading-relaxed max-w-xl ${
+            light ? 'text-spa-text-light-secondary' : 'text-spa-text-secondary'
           }`}
         >
           {subtitle}
@@ -57,3 +68,4 @@ export default function SectionHeading({
     </motion.div>
   );
 }
+

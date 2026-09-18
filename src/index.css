@@ -9,6 +9,24 @@
 ===================================================== */
 
 :root {
+  --spa-ivory: #F9F6F0;
+  --spa-cream: #F2EDE4;
+  --spa-sand: #E5DED3;
+  --spa-sand-light: #EFE9DF;
+  --spa-charcoal: #1B1917;
+  --spa-charcoal-card: #24221F;
+  --spa-text-primary: #1B1917;
+  --spa-text-secondary: #4E4942;
+  --spa-text-muted: #787267;
+  --spa-text-light: #F9F6F0;
+  --spa-text-light-secondary: #D7D0C5;
+  --spa-text-light-muted: #A69E92;
+  --spa-gold: #B38F5F;
+  --spa-gold-light: #CCAFA0;
+  --spa-gold-dark: #8F6E43;
+  --spa-border-light: rgba(27, 25, 23, 0.10);
+  --spa-border-dark: rgba(249, 246, 240, 0.12);
+
   --ivory: #f8f5f0;
   --cream: #eee8df;
   --cream-light: #fcfaf7;
@@ -36,13 +54,13 @@
   body {
     margin: 0;
     min-width: 320px;
-    background-color: var(--ivory);
-    color: var(--charcoal);
+    background-color: var(--spa-ivory);
+    color: var(--spa-text-primary);
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
       'Segoe UI', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
   }
 
