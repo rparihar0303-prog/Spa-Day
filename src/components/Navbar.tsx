@@ -99,16 +99,16 @@ export default function Navbar() {
           duration: 0.8,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-400 ${
           scrolled
-            ? 'border-b border-[#24211e]/10 bg-[#f8f5f0]/95 shadow-[0_8px_30px_rgba(36,29,24,0.04)] backdrop-blur-xl'
+            ? 'border-b border-spa-charcoal/10 bg-spa-ivory/95 shadow-[0_8px_30px_rgba(27,25,23,0.04)] backdrop-blur-xl'
             : 'bg-transparent'
         }`}
       >
-        <nav className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <nav className="mx-auto max-w-[1240px] px-5 sm:px-8 lg:px-12">
           <div
-            className={`flex items-center justify-between transition-all duration-500 ${
-              scrolled ? 'h-[74px]' : 'h-[88px]'
+            className={`flex items-center justify-between transition-all duration-400 ${
+              scrolled ? 'h-[70px]' : 'h-[84px]'
             }`}
           >
             {/* Logo */}
@@ -116,29 +116,30 @@ export default function Navbar() {
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
               className="group relative flex shrink-0 items-baseline gap-2"
+              aria-label="SPA DAY Home"
             >
               <span
-                className={`font-serif text-[24px] font-medium tracking-[0.16em] transition-colors duration-500 ${
-                  scrolled ? 'text-[#24211e]' : 'text-white'
+                className={`font-serif text-[23px] font-medium tracking-[0.16em] transition-colors duration-400 ${
+                  scrolled ? 'text-spa-charcoal' : 'text-white'
                 }`}
               >
                 SPA
               </span>
 
               <span
-                className={`text-[12px] font-light uppercase tracking-[0.3em] transition-colors duration-500 ${
-                  scrolled ? 'text-[#a77c4c]' : 'text-[#d2ad7b]'
+                className={`text-[11px] font-light uppercase tracking-[0.3em] transition-colors duration-400 ${
+                  scrolled ? 'text-spa-gold-dark' : 'text-spa-gold-light'
                 }`}
               >
                 Day
               </span>
 
               {/* Logo hover underline */}
-              <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#b5946b] transition-all duration-500 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-spa-gold transition-all duration-400 group-hover:w-full" />
             </a>
 
-            {/* Desktop Navigation - ALL TABS KEPT */}
-            <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
+            {/* Desktop Navigation - ALL TABS PRESERVED */}
+            <ul className="hidden items-center gap-6 lg:flex xl:gap-7">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href;
 
@@ -147,13 +148,13 @@ export default function Navbar() {
                     <a
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className={`group relative inline-block whitespace-nowrap px-1 py-3 text-[12px] font-light tracking-[0.04em] transition-colors duration-300 ${
+                      className={`group relative inline-block whitespace-nowrap px-1 py-2.5 text-[12px] tracking-[0.04em] transition-colors duration-300 ${
                         scrolled
                           ? isActive
-                            ? 'text-[#24211e]'
-                            : 'text-[#24211e]/65 hover:text-[#a77c4c]'
+                            ? 'text-spa-charcoal font-medium'
+                            : 'text-spa-text-secondary hover:text-spa-gold-dark'
                           : isActive
-                            ? 'text-white'
+                            ? 'text-white font-medium'
                             : 'text-white/80 hover:text-white'
                       }`}
                     >
@@ -161,17 +162,8 @@ export default function Navbar() {
 
                       {/* Underline */}
                       <span
-                        className={`absolute bottom-0 left-0 h-[1px] bg-[#b5946b] transition-all duration-400 ease-out ${
-                          isActive
-                            ? 'w-full'
-                            : 'w-0 group-hover:w-full'
-                        }`}
-                      />
-
-                      {/* Small dot on hover */}
-                      <span
-                        className={`absolute -bottom-[3px] left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-[#b5946b] opacity-0 transition-all duration-300 group-hover:opacity-100 ${
-                          isActive ? 'opacity-100' : ''
+                        className={`absolute bottom-0 left-0 h-[1.5px] bg-spa-gold transition-all duration-300 ease-out ${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
                         }`}
                       />
                     </a>
@@ -184,17 +176,17 @@ export default function Navbar() {
             <a
               href="#booking"
               onClick={(e) => handleNavClick(e, '#booking')}
-              className={`group hidden shrink-0 items-center gap-3 border px-5 py-3 text-[10px] font-medium uppercase tracking-[0.25em] transition-all duration-400 lg:flex ${
+              className={`group hidden shrink-0 items-center gap-2.5 border px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.22em] transition-all duration-300 lg:flex ${
                 scrolled
-                  ? 'border-[#24211e]/20 text-[#24211e] hover:border-[#24211e] hover:bg-[#24211e] hover:text-white'
-                  : 'border-white/40 text-white hover:border-white hover:bg-white hover:text-[#24211e]'
+                  ? 'border-spa-charcoal/25 text-spa-charcoal hover:border-spa-charcoal hover:bg-spa-charcoal hover:text-spa-ivory'
+                  : 'border-white/40 text-white hover:border-white hover:bg-white hover:text-spa-charcoal'
               }`}
             >
               <span>Book Now</span>
 
               <ArrowUpRight
                 size={14}
-                strokeWidth={1.3}
+                strokeWidth={1.4}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </a>
@@ -206,9 +198,7 @@ export default function Navbar() {
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
               className={`relative z-[60] flex h-10 w-10 items-center justify-center lg:hidden ${
-                scrolled || mobileOpen
-                  ? 'text-[#24211e]'
-                  : 'text-white'
+                scrolled || mobileOpen ? 'text-spa-charcoal' : 'text-white'
               }`}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -220,7 +210,7 @@ export default function Navbar() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X size={24} strokeWidth={1.4} />
+                    <X size={22} strokeWidth={1.5} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -230,7 +220,7 @@ export default function Navbar() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu size={24} strokeWidth={1.4} />
+                    <Menu size={22} strokeWidth={1.5} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -243,33 +233,28 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#f8f5f0] lg:hidden"
+            className="fixed inset-0 z-40 bg-spa-ivory lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
           >
-            {/* Decorative circles */}
-            <div className="pointer-events-none absolute -right-28 top-24 h-80 w-80 rounded-full border border-[#b5946b]/15" />
-            <div className="pointer-events-none absolute -right-16 top-36 h-56 w-56 rounded-full border border-[#b5946b]/10" />
-
-            <div className="flex min-h-screen flex-col justify-center px-8 pb-16">
+            <div className="flex min-h-screen flex-col justify-center px-7 sm:px-10 pb-12 pt-20">
               {/* Label */}
               <motion.div
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15, duration: 0.4 }}
-                className="mb-8 flex items-center gap-3"
+                transition={{ delay: 0.1, duration: 0.35 }}
+                className="mb-6 flex items-center gap-3"
               >
-                <span className="h-px w-8 bg-[#b5946b]" />
-
-                <span className="text-[10px] uppercase tracking-[0.3em] text-[#a77c4c]">
+                <span className="h-px w-8 bg-spa-gold" />
+                <span className="text-[10px] uppercase tracking-[0.25em] text-spa-gold-dark font-medium">
                   Spa Day · Indore
                 </span>
               </motion.div>
 
               {/* ALL MOBILE TABS */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start divide-y divide-spa-sand/60 border-y border-spa-sand/60">
                 {navItems.map((item, index) => {
                   const isActive = activeSection === item.href;
 
@@ -278,29 +263,28 @@ export default function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -15 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.15 + index * 0.06,
-                        duration: 0.45,
+                        delay: 0.1 + index * 0.04,
+                        duration: 0.35,
                         ease: [0.16, 1, 0.3, 1],
                       }}
-                      className={`group relative flex items-center gap-3 border-b py-2.5 font-serif text-[2.25rem] font-light leading-tight transition-colors duration-300 ${
+                      className={`group flex w-full items-center justify-between py-3 font-serif text-[1.85rem] font-light leading-tight transition-colors duration-300 ${
                         isActive
-                          ? 'border-[#b5946b]/40 text-[#a77c4c]'
-                          : 'border-[#24211e]/10 text-[#24211e] hover:text-[#a77c4c]'
+                          ? 'text-spa-gold-dark font-normal'
+                          : 'text-spa-charcoal hover:text-spa-gold-dark'
                       }`}
                     >
-                      {/* Mobile animated line */}
-                      <span
-                        className={`h-px bg-[#b5946b] transition-all duration-300 ${
+                      <span>{item.label}</span>
+                      <ArrowUpRight
+                        size={16}
+                        className={`transition-all duration-300 ${
                           isActive
-                            ? 'w-7'
-                            : 'w-0 group-hover:w-7'
+                            ? 'opacity-100 text-spa-gold-dark'
+                            : 'opacity-30 group-hover:opacity-100'
                         }`}
                       />
-
-                      {item.label}
                     </motion.a>
                   );
                 })}
@@ -310,16 +294,16 @@ export default function Navbar() {
               <motion.a
                 href="#booking"
                 onClick={(e) => handleNavClick(e, '#booking')}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: 0.65,
-                  duration: 0.5,
+                  delay: 0.45,
+                  duration: 0.35,
                 }}
-                className="mt-10 flex w-full max-w-xs items-center justify-between bg-[#24211e] px-6 py-4 text-[10px] font-medium uppercase tracking-[0.25em] text-white transition-colors duration-300 hover:bg-[#a77c4c]"
+                className="mt-8 flex w-full items-center justify-between bg-spa-charcoal px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.22em] text-spa-ivory transition-colors duration-300 hover:bg-spa-gold"
               >
                 <span>Book Your Experience</span>
-                <ArrowUpRight size={16} strokeWidth={1.3} />
+                <ArrowUpRight size={15} strokeWidth={1.3} />
               </motion.a>
             </div>
           </motion.div>
