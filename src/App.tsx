@@ -14,7 +14,7 @@ import FloatingCTA from '@/components/FloatingCTA';
 
 function App() {
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-spa-ivory text-spa-charcoal">
       <Navbar />
       <main>
         <Hero />

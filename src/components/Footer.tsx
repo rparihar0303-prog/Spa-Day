@@ -19,8 +19,8 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-4 md:col-span-5">
             <a
-              href="#hero"
-              onClick={(e) => handleNavClick(e, '#hero')}
+              href="#home"
+              onClick={(e) => handleNavClick(e, '#home')}
               className="inline-flex items-baseline gap-2 group w-fit"
             >
               <span className="font-serif text-2xl font-light tracking-[0.16em] text-spa-ivory group-hover:text-spa-gold-light transition-colors">
