@@ -84,7 +84,7 @@ export default function Experience() {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <div className="divide-y divide-spa-sand/80 border-y border-spa-sand/80 bg-white/50 p-6 sm:p-8 border border-spa-sand/80 shadow-[0_8px_28px_rgba(27,25,23,0.04)]">
+            <div className="divide-y divide-spa-sand/80 border-y border-spa-sand/80 bg-white/50 p-6 sm:p-8 border shadow-[0_8px_28px_rgba(27,25,23,0.04)]">
               {steps.map((step, index) => (
                 <motion.div
                   key={step.number}

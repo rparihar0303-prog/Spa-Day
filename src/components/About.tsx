@@ -162,16 +162,14 @@ export default function About() {
               className="space-y-4 text-sm sm:text-[15px] font-light leading-relaxed text-spa-text-secondary"
             >
               <p>
-                SPA DAY is a place to slow down, take a breath, and set aside
-                the rush of the day. Our space in Indore is designed to feel
-                calm from the moment you walk in — soft light, natural
-                textures, and a quietness that lets you settle.
+                SPA DAY is a sanctuary of calm in Indore, where you can slow down,
+                unwind, and take a pause from everyday life. Thoughtfully designed 
+                to help you relax and reconnect with your inner balance.
               </p>
 
               <p>
-                Every detail, from the atmosphere to the treatment itself, is
-                built around comfort and personal care. No rush, no pressure —
-                just time set aside for you.
+                Every detail, from the atmosphere to each treatment, is thoughtfully 
+                designed around your comfort and care. No rush, no pressure—just time dedicated to you.
               </p>
             </motion.div>
 

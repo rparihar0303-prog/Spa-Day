@@ -51,7 +51,7 @@ export default function Lightbox({
     <AnimatePresence>
       {isOpen && currentImage && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/95 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-spa-charcoal/95 backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -62,7 +62,7 @@ export default function Lightbox({
           aria-label="Image gallery lightbox"
         >
           <button
-            className="absolute top-6 right-6 z-10 p-2 text-ivory/80 hover:text-ivory transition-colors"
+            className="absolute top-6 right-6 z-10 p-2 text-spa-ivory/80 hover:text-spa-gold-light transition-colors focus-visible:ring-1 focus-visible:ring-spa-gold rounded-sm"
             onClick={onClose}
             aria-label="Close lightbox"
           >
@@ -70,7 +70,7 @@ export default function Lightbox({
           </button>
 
           <button
-            className="absolute left-4 md:left-8 z-10 p-2 text-ivory/80 hover:text-ivory transition-colors"
+            className="absolute left-4 md:left-8 z-10 p-2 text-spa-ivory/80 hover:text-spa-gold-light transition-colors focus-visible:ring-1 focus-visible:ring-spa-gold rounded-sm"
             onClick={(e) => {
               e.stopPropagation();
               handlePrev();
@@ -84,7 +84,7 @@ export default function Lightbox({
             key={index}
             src={currentImage.url}
             alt={currentImage.alt}
-            className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm shadow-2xl"
+            className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl border border-white/10"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -92,7 +92,7 @@ export default function Lightbox({
           />
 
           <button
-            className="absolute right-4 md:right-8 z-10 p-2 text-ivory/80 hover:text-ivory transition-colors"
+            className="absolute right-4 md:right-8 z-10 p-2 text-spa-ivory/80 hover:text-spa-gold-light transition-colors focus-visible:ring-1 focus-visible:ring-spa-gold rounded-sm"
             onClick={(e) => {
               e.stopPropagation();
               handleNext();
@@ -102,7 +102,7 @@ export default function Lightbox({
             <ChevronRight className="h-8 w-8" />
           </button>
 
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-ivory/60 text-sm tracking-wide">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-spa-text-light-muted text-xs tracking-widest font-sans uppercase">
             {(index ?? 0) + 1} / {images.length}
           </div>
         </motion.div>

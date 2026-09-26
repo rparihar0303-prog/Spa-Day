@@ -76,17 +76,16 @@ export default function Hero() {
 
           {/* Main Heading */}
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-light leading-[1.05] tracking-tight text-spa-ivory">
-            <span className="block">Relax.</span>
-            <span className="block">Rejuvenate.</span>
+            <span className="block">Pause.</span>
+            <span className="block">Breathe.</span>
             <span className="mt-1 block font-serif text-[0.9em] font-light leading-[1.08] text-spa-gold-light">
-              <em className="italic font-light">Feel Renewed.</em>
+              <em className="italic font-light">Begin Again.</em>
             </span>
           </h1>
 
           {/* Description */}
           <p className="mt-6 max-w-md text-sm sm:text-base font-light leading-relaxed text-spa-text-light-secondary">
-            Thoughtfully designed wellness experiences for rest, renewal, and
-            everyday balance.
+            Personalized wellness experiences designed to restore your body, calm your mind, and renew your spirit.
           </p>
 
           {/* CTA Buttons */}

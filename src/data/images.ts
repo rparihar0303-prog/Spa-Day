@@ -23,7 +23,7 @@ export const treatments: Treatment[] = [
     description:
       'A gentle, full-body massage using long, flowing strokes to ease tension and restore a sense of calm.',
     duration: '60 min',
-    price: '[Add Price]',
+    price: '[₹1700]',
     image:
       'https://images.pexels.com/photos/6187418/pexels-photo-6187418.jpeg?auto=compress&cs=tinysrgb&w=900',
   },
@@ -32,7 +32,7 @@ export const treatments: Treatment[] = [
     description:
       'Focused pressure on deeper layers of muscle to release chronic tension and stiffness.',
     duration: '75 min',
-    price: '[Add Price]',
+    price: '[₹2000]',
     image:
       'https://images.pexels.com/photos/6187652/pexels-photo-6187652.jpeg?auto=compress&cs=tinysrgb&w=900',
   },
@@ -41,7 +41,7 @@ export const treatments: Treatment[] = [
     description:
       'A soothing massage paired with essential oils chosen to calm the mind and lift the senses.',
     duration: '60 min',
-    price: '[Add Price]',
+    price: '[₹1400]',
     image:
       'https://images.pexels.com/photos/6560252/pexels-photo-6560252.jpeg?auto=compress&cs=tinysrgb&w=900',
   },
@@ -50,7 +50,7 @@ export const treatments: Treatment[] = [
     description:
       'A targeted treatment releasing built-up stress in the neck, shoulders, and scalp.',
     duration: '45 min',
-    price: '[Add Price]',
+    price: '[₹1200]',
     image:
       'https://images.pexels.com/photos/9146381/pexels-photo-9146381.jpeg?auto=compress&cs=tinysrgb&w=900',
   },
@@ -67,8 +67,8 @@ export const treatments: Treatment[] = [
     name: 'Couple Spa',
     description:
       'A shared wellness experience designed for two, in a private and tranquil setting.',
-    duration: '90 min',
-    price: '[Add Price]',
+    duration: '60 min',
+    price: '[₹3000]',
     image:
       'https://images.pexels.com/photos/7365434/pexels-photo-7365434.jpeg?auto=compress&cs=tinysrgb&w=900',
   },

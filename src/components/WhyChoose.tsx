@@ -81,8 +81,8 @@ export default function WhyChoose() {
             className="max-w-md lg:pb-2"
           >
             <p className="text-sm sm:text-base leading-relaxed text-spa-text-secondary">
-              We focus on the atmosphere, personal attention, and thoughtful
-              details that turn every treatment into a moment of calm.
+              From the atmosphere to the smallest details, everything is designed 
+              to make your treatment a moment of calm and care.
             </p>
           </motion.div>
         </div>

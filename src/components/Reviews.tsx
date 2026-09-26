@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Container from '@/components/ui/Container';
+import SectionLabel from '@/components/ui/SectionLabel';
 
 interface Testimonial {
   quote: string;
@@ -32,7 +34,7 @@ const testimonials: Testimonial[] = [
 export default function Reviews() {
   const [active, setActive] = useState(0);
 
-  // Automatic testimonial change
+  // Automatic testimonial change every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((current) => (current + 1) % testimonials.length);
@@ -46,56 +48,33 @@ export default function Reviews() {
   return (
     <section
       id="reviews"
-      className="relative min-h-[620px] overflow-hidden bg-[#1d1c1a] text-[#f4f0e9] md:min-h-[650px]"
+      className="relative overflow-hidden bg-spa-charcoal text-spa-ivory border-y border-white/[0.08] py-16 md:py-20 lg:py-24"
     >
-      {/* Top line */}
-      <div className="absolute left-0 right-0 top-0 h-px bg-white/[0.08]" />
-
-      {/* Huge background number */}
-      <AnimatePresence mode="wait">
+      <Container>
+        {/* Section Header */}
         <motion.div
-          key={active}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.7 }}
-          className="pointer-events-none absolute -bottom-16 left-[-20px] select-none font-serif text-[18rem] font-light leading-none text-white/[0.025] md:text-[25rem]"
-        >
-          0{active + 1}
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Decorative circle */}
-      <div className="pointer-events-none absolute -right-[180px] top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full border border-[#b89463]/10 md:h-[650px] md:w-[650px]" />
-
-      <div className="relative mx-auto flex min-h-[620px] max-w-[1500px] flex-col px-6 py-20 md:min-h-[650px] md:px-10 md:py-24 lg:px-16">
-        
-        {/* Header */}
-        <motion.div
-          className="flex items-center justify-between"
-          initial={{ opacity: 0, y: -15 }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6"
+          initial={{ opacity: 0, y: -12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-[#b89463]" />
-
-            <span className="text-[10px] font-medium uppercase tracking-[0.32em] text-[#c7a878]">
-              Guest Reviews
-            </span>
+          <div>
+            <SectionLabel label="Guest Reflections" light />
+            <h2 className="mt-3 font-serif text-3xl sm:text-4xl md:text-5xl font-light text-spa-ivory tracking-tight">
+              Voices of <em className="italic font-light text-spa-gold-light">Stillness</em>
+            </h2>
           </div>
 
-          <span className="hidden text-[9px] uppercase tracking-[0.3em] text-white/25 md:block">
-            Voices from SPA DAY
+          <span className="text-xs uppercase tracking-[0.25em] text-spa-text-light-muted">
+            0{active + 1} &mdash; 0{testimonials.length}
           </span>
         </motion.div>
 
-        {/* Main content */}
-        <div className="my-auto grid items-center gap-12 py-14 lg:grid-cols-12 lg:gap-20">
-
-          {/* Left navigation */}
-          <div className="flex gap-5 lg:col-span-2 lg:flex-col lg:gap-4">
+        {/* Main Content Grid */}
+        <div className="grid items-center gap-10 py-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left navigation tabs */}
+          <div className="flex gap-6 lg:col-span-2 lg:flex-col lg:gap-5">
             {testimonials.map((item, index) => {
               const isActive = active === index;
 
@@ -104,22 +83,21 @@ export default function Reviews() {
                   key={item.name}
                   type="button"
                   onClick={() => setActive(index)}
-                  className="group flex items-center gap-3 text-left"
+                  className="group flex items-center gap-3 text-left focus-visible:ring-1 focus-visible:ring-spa-gold rounded-sm outline-none"
                   aria-label={`Show review ${index + 1}`}
                 >
                   <span
                     className={`h-px transition-all duration-500 ${
                       isActive
-                        ? 'w-9 bg-[#b89463]'
-                        : 'w-4 bg-white/20 group-hover:w-6 group-hover:bg-white/40'
+                        ? 'w-10 bg-spa-gold'
+                        : 'w-4 bg-white/20 group-hover:w-7 group-hover:bg-white/40'
                     }`}
                   />
-
                   <span
                     className={`font-serif text-sm transition-colors duration-300 ${
                       isActive
-                        ? 'text-[#c7a878]'
-                        : 'text-white/25 group-hover:text-white/50'
+                        ? 'text-spa-gold-light font-medium'
+                        : 'text-spa-text-light-muted group-hover:text-spa-ivory'
                     }`}
                   >
                     0{index + 1}
@@ -129,47 +107,28 @@ export default function Reviews() {
             })}
           </div>
 
-          {/* Quote */}
+          {/* Center Quote */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{
-                  opacity: 0,
-                  y: 25,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -20,
-                }}
-                transition={{
-                  duration: 0.65,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Quote mark */}
-                <div className="mb-5 font-serif text-6xl font-light leading-none text-[#b89463]/60 md:text-7xl">
-                  “
-                </div>
-
-                <blockquote className="max-w-[900px] font-serif text-[2rem] font-light italic leading-[1.25] tracking-[-0.035em] text-[#f4f0e9] sm:text-4xl md:text-5xl lg:text-[3.8rem]">
-                  {testimonial.quote}
+                <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-light leading-[1.3] text-spa-ivory tracking-tight">
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
-                {/* Author */}
-                <div className="mt-10 flex items-center gap-5">
-                  <div className="h-px w-10 bg-[#b89463]/60" />
-
+                {/* Author Info */}
+                <div className="mt-8 flex items-center gap-4">
+                  <span className="h-px w-8 bg-spa-gold" />
                   <div>
-                    <p className="text-sm font-light tracking-wide text-white/90">
+                    <p className="text-sm sm:text-base font-normal tracking-wide text-spa-ivory">
                       {testimonial.name}
                     </p>
-
-                    <p className="mt-1 text-[9px] uppercase tracking-[0.28em] text-[#b89463]">
+                    <p className="mt-0.5 text-[11px] uppercase tracking-[0.22em] text-spa-gold-light">
                       {testimonial.treatment}
                     </p>
                   </div>
@@ -178,31 +137,29 @@ export default function Reviews() {
             </AnimatePresence>
           </div>
 
-          {/* Right index */}
+          {/* Right index indicator */}
           <div className="hidden justify-end lg:col-span-2 lg:flex">
             <div className="flex flex-col items-end">
-              <span className="font-serif text-5xl font-light text-white/80">
+              <span className="font-serif text-5xl font-light text-spa-ivory/80">
                 0{active + 1}
               </span>
-
-              <span className="mt-2 text-[9px] uppercase tracking-[0.3em] text-white/25">
-                of 03
+              <span className="mt-1 text-[10px] uppercase tracking-[0.25em] text-spa-text-light-muted">
+                of 0{testimonials.length}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Bottom row */}
+        {/* Bottom row: Progress & CTA */}
         <motion.div
-          className="flex items-center justify-between border-t border-white/10 pt-6"
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10 pt-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="flex items-center gap-4">
-            {/* Progress */}
-            <div className="h-px w-24 overflow-hidden bg-white/10">
+            <div className="h-0.5 w-24 overflow-hidden bg-white/10 rounded-full">
               <motion.div
                 key={active}
                 initial={{ width: 0 }}
@@ -210,32 +167,27 @@ export default function Reviews() {
                   width: `${((active + 1) / testimonials.length) * 100}%`,
                 }}
                 transition={{ duration: 0.6 }}
-                className="h-full bg-[#b89463]"
+                className="h-full bg-spa-gold"
               />
             </div>
-
-            <span className="text-[9px] uppercase tracking-[0.28em] text-white/25">
-              Guest stories
+            <span className="text-[10px] uppercase tracking-[0.24em] text-spa-text-light-muted">
+              Guest Reflections
             </span>
           </div>
 
           <a
-            href="#contact"
-            className="group flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-white/65 transition-colors duration-300 hover:text-[#c7a878]"
+            href="#booking"
+            className="group inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.22em] text-spa-text-light-secondary transition-colors duration-300 hover:text-spa-gold-light"
           >
-            Book your experience
-
+            <span>Reserve your session</span>
             <ArrowUpRight
               size={14}
-              strokeWidth={1}
-              className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+              strokeWidth={1.5}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-spa-gold"
             />
           </a>
         </motion.div>
-      </div>
-
-      {/* Bottom line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.08]" />
+      </Container>
     </section>
   );
 }
