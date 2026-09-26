@@ -1,4 +1,5 @@
 import { Instagram } from 'lucide-react';
+import Container from '@/components/ui/Container';
 import { navItems } from '@/data/navigation';
 
 export default function Footer() {
@@ -12,45 +13,48 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-charcoal pt-20 pb-10">
-      <div className="mx-auto max-w-8xl px-6 md:px-10 lg:px-16">
-        <div className="grid md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-ivory/10">
-          {/* Brand — wider */}
-          <div className="md:col-span-5 flex flex-col gap-4">
-            <h3 className="flex items-baseline gap-1.5">
-              <span className="text-xl font-serif font-medium tracking-[0.15em] text-ivory">
-                SPA
+    <footer className="relative overflow-hidden bg-spa-charcoal text-spa-ivory border-t border-white/[0.08] pt-16 pb-12">
+      <Container>
+        <div className="grid gap-10 pb-12 border-b border-white/10 md:grid-cols-12 md:gap-8 lg:gap-12">
+          {/* Brand Column */}
+          <div className="flex flex-col gap-4 md:col-span-5">
+            <a
+              href="#hero"
+              onClick={(e) => handleNavClick(e, '#hero')}
+              className="inline-flex items-baseline gap-2 group w-fit"
+            >
+              <span className="font-serif text-2xl font-light tracking-[0.16em] text-spa-ivory group-hover:text-spa-gold-light transition-colors">
+                SPA DAY
               </span>
-              <span className="text-xs font-sans font-light tracking-[0.3em] uppercase text-gold-light">
-                Day
-              </span>
-            </h3>
-            <p className="text-sm font-light text-ivory/45 leading-relaxed max-w-xs">
-              A calm space for your time to relax — in the heart of Indore.
+            </a>
+
+            <p className="max-w-xs text-sm font-light leading-relaxed text-spa-text-light-secondary">
+              A sanctuary of stillness in the heart of Indore, dedicated to mindful
+              relaxation and holistic renewal.
             </p>
-            {/* Instagram placeholder */}
+
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
-              className="inline-flex items-center gap-2 text-[11px] uppercase tracking-wide-label text-ivory/40 hover:text-gold-light transition-colors mt-2"
+              className="mt-2 inline-flex items-center gap-2 text-xs font-light uppercase tracking-[0.2em] text-spa-text-light-muted hover:text-spa-gold-light transition-colors"
             >
-              <Instagram className="h-4 w-4" strokeWidth={1} />
-              [Instagram to be added]
+              <Instagram className="h-4 w-4 text-spa-gold" strokeWidth={1.5} />
+              <span>[Instagram to be added]</span>
             </a>
           </div>
 
-          {/* Nav links */}
-          <div className="md:col-span-3 flex flex-col gap-3">
-            <h4 className="text-[10px] font-medium uppercase tracking-wide-label text-gold-light/70 mb-1">
+          {/* Navigation Directory */}
+          <div className="flex flex-col gap-3 md:col-span-3">
+            <h4 className="text-[11px] font-medium uppercase tracking-[0.24em] text-spa-gold-light mb-1">
               Explore
             </h4>
-            <nav className="grid grid-cols-2 gap-x-6 gap-y-2">
+            <nav className="grid grid-cols-2 gap-x-6 gap-y-2.5">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-sm font-light text-ivory/55 hover:text-gold-light transition-colors duration-300"
+                  className="text-xs sm:text-sm font-light text-spa-text-light-secondary hover:text-spa-gold-light transition-colors duration-300"
                 >
                   {item.label}
                 </a>
@@ -58,12 +62,12 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Contact */}
-          <div className="md:col-span-4 flex flex-col gap-3">
-            <h4 className="text-[10px] font-medium uppercase tracking-wide-label text-gold-light/70 mb-1">
-              Contact
+          {/* Sanctuary Contact */}
+          <div className="flex flex-col gap-3 md:col-span-4">
+            <h4 className="text-[11px] font-medium uppercase tracking-[0.24em] text-spa-gold-light mb-1">
+              Sanctuary
             </h4>
-            <address className="text-sm font-light text-ivory/55 leading-[1.8] not-italic">
+            <address className="text-xs sm:text-sm font-light leading-relaxed text-spa-text-light-secondary not-italic">
               Shop Office No. 101, N.M. Tower,
               <br />
               6/1/3, 209, Racecourse Road,
@@ -72,32 +76,29 @@ export default function Footer() {
               <br />
               Indore, Madhya Pradesh, India.
             </address>
-            <div className="flex flex-col gap-1 mt-2">
-              <span className="text-sm font-light text-ivory/45">
-                [Phone number to be added]
-              </span>
-              <span className="text-sm font-light text-ivory/45">
-                [Email to be added]
-              </span>
+
+            <div className="mt-2 flex flex-col gap-1 text-xs sm:text-sm font-light text-spa-text-light-muted">
+              <span>[Phone number to be added]</span>
+              <span>[Email to be added]</span>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8">
-          <p className="text-[11px] text-ivory/35 font-light tracking-wide">
-            © 2026 SPA DAY. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8">
+          <p className="text-xs font-light tracking-wide text-spa-text-light-muted">
+            &copy; 2026 SPA DAY. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-[11px] text-ivory/35 hover:text-gold-light transition-colors cursor-pointer">
+            <span className="text-xs font-light text-spa-text-light-muted hover:text-spa-gold-light transition-colors cursor-pointer">
               Privacy Policy
             </span>
-            <span className="text-[11px] text-ivory/35 hover:text-gold-light transition-colors cursor-pointer">
-              Terms
+            <span className="text-xs font-light text-spa-text-light-muted hover:text-spa-gold-light transition-colors cursor-pointer">
+              Terms &amp; Conditions
             </span>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

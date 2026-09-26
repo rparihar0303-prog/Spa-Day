@@ -1,8 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import {
-  CheckCircle,
-  AlertCircle,
   Loader2,
   ArrowUpRight,
   Phone,
@@ -11,6 +9,15 @@ import {
   Clock3,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import Container from '@/components/ui/Container';
+import SectionLabel from '@/components/ui/SectionLabel';
+import Button from '@/components/ui/Button';
+import {
+  FormField,
+  SelectField,
+  TextareaField,
+  StatusNotice,
+} from '@/components/ui/FormField';
 
 interface FormData {
   full_name: string;
@@ -71,7 +78,7 @@ export default function Booking() {
     if (!form.phone.trim()) {
       newErrors.phone = 'Please enter your phone number.';
     } else if (form.phone.trim().length < 7) {
-      newErrors.phone = 'Please enter a valid phone number.';
+      newErrors.phone = 'Please enter a valid phone number (minimum 7 digits).';
     }
 
     setErrors(newErrors);
@@ -125,385 +132,263 @@ export default function Booking() {
     }
   };
 
-  const inputClass =
-    'w-full border-0 border-b border-charcoal/15 bg-transparent px-0 py-2.5 text-[13px] font-light text-charcoal outline-none transition-colors duration-300 placeholder:text-charcoal/25 focus:border-gold';
-
-  const labelClass =
-    'mb-1.5 block text-[9px] font-medium uppercase tracking-[0.24em] text-charcoal/45';
-
   return (
     <section
       id="booking"
-      className="relative overflow-hidden bg-[#f4f1eb] py-16 md:py-20 lg:py-24"
+      className="relative overflow-hidden bg-spa-cream py-16 md:py-20 lg:py-24"
     >
-      {/* Decorative background shape */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-20 h-[520px] w-[520px] rounded-full border border-gold/[0.07]"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-20 top-40 h-[360px] w-[360px] rounded-full border border-gold/[0.06]"
-      />
-
-      <div className="relative mx-auto max-w-[1480px] px-6 md:px-10 lg:px-16">
-        {/* Compact Header */}
-        <div className="mb-10 grid items-end gap-7 lg:grid-cols-12 lg:mb-12">
+      <Container>
+        {/* Section Header */}
+        <div className="mb-10 sm:mb-12 lg:mb-14 grid items-end gap-6 lg:grid-cols-12">
           <motion.div
             className="lg:col-span-7"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-gold/70" />
-
-              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-gold-dark">
-                Book Your Visit
-              </span>
-            </div>
-
-            <h2 className="font-serif text-[2.7rem] font-light leading-[1.05] tracking-[-0.045em] text-charcoal sm:text-5xl md:text-6xl">
-              Ready to take a break?
+            <SectionLabel label="Concierge & Reservations" />
+            <h2 className="mt-3 font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-light leading-[1.08] tracking-tight text-spa-charcoal">
+              Reserve Your{' '}
+              <em className="italic font-light text-spa-gold-dark">
+                Moment of Calm
+              </em>
             </h2>
           </motion.div>
 
           <motion.div
-            className="flex items-end justify-between gap-5 lg:col-span-4 lg:col-start-9"
+            className="lg:col-span-5 lg:pb-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{
-              duration: 0.8,
+              duration: 0.7,
               delay: 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <p className="max-w-[350px] text-sm font-light leading-6 text-charcoal/50 md:text-[15px]">
-              Tell us when you would like to visit. We will help you find the
-              right treatment and time.
+            <p className="text-sm sm:text-base font-light leading-relaxed text-spa-text-secondary">
+              Tell us when you would like to visit. Our concierge will curate your
+              session and confirm availability with you personally.
             </p>
-
-            <span className="hidden whitespace-nowrap text-[9px] uppercase tracking-[0.25em] text-charcoal/30 lg:block">
-              Private appointments
-            </span>
           </motion.div>
         </div>
 
-        {/* Booking Console */}
-        <div className="grid overflow-hidden border border-charcoal/[0.12] bg-[#ebe7df] lg:grid-cols-12">
-          {/* Form Area */}
+        {/* Dual-Tone Concierge Console */}
+        <div className="grid overflow-hidden border border-spa-sand/80 shadow-[0_12px_40px_rgba(27,25,23,0.05)] lg:grid-cols-12">
+          {/* Left Form Panel: Warm Alabaster */}
           <motion.div
-            className="p-6 sm:p-8 md:p-10 lg:col-span-8 lg:p-12"
-            initial={{ opacity: 0, y: 20 }}
+            className="bg-spa-ivory p-6 sm:p-8 md:p-10 lg:col-span-8 lg:p-12"
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Form top label */}
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-8 flex items-center justify-between border-b border-spa-sand/80 pb-5">
               <div>
-                <span className="text-[9px] uppercase tracking-[0.28em] text-gold-dark">
+                <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-spa-gold-dark">
                   Appointment Request
                 </span>
-
-                <p className="mt-2 text-xs font-light text-charcoal/40">
-                  All fields marked with * are required.
+                <p className="mt-1 text-xs font-light text-spa-text-muted">
+                  Required fields are marked with an asterisk (*).
                 </p>
               </div>
 
-              <span className="font-serif text-2xl font-light text-charcoal/15">
+              <span className="font-serif text-2xl font-light text-spa-sand-dark">
                 01
               </span>
             </div>
 
-            <form
-              onSubmit={handleSubmit}
-              noValidate
-              className="flex flex-col gap-6"
-            >
-              {/* First row */}
-              <div className="grid gap-6 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="full_name" className={labelClass}>
-                    Full Name <span className="text-gold">*</span>
-                  </label>
-
-                  <input
-                    type="text"
-                    id="full_name"
-                    name="full_name"
-                    value={form.full_name}
-                    onChange={handleChange}
-                    className={inputClass}
-                    placeholder="Your name"
-                    aria-required="true"
-                    aria-invalid={!!errors.full_name}
-                  />
-
-                  {errors.full_name && (
-                    <p className="mt-2 flex items-center gap-1 text-[11px] text-red-700">
-                      <AlertCircle className="h-3 w-3" />
-                      {errors.full_name}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className={labelClass}>
-                    Phone Number <span className="text-gold">*</span>
-                  </label>
-
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    className={inputClass}
-                    placeholder="Your phone number"
-                    aria-required="true"
-                    aria-invalid={!!errors.phone}
-                  />
-
-                  {errors.phone && (
-                    <p className="mt-2 flex items-center gap-1 text-[11px] text-red-700">
-                      <AlertCircle className="h-3 w-3" />
-                      {errors.phone}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* Second row */}
-              <div className="grid gap-6 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="email" className={labelClass}>
-                    Email{' '}
-                    <span className="text-charcoal/25">(optional)</span>
-                  </label>
-
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className={inputClass}
-                    placeholder="Your email"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="treatment_interest" className={labelClass}>
-                    Treatment of Interest
-                  </label>
-
-                  <select
-                    id="treatment_interest"
-                    name="treatment_interest"
-                    value={form.treatment_interest}
-                    onChange={handleChange}
-                    className={`${inputClass} cursor-pointer`}
-                  >
-                    <option value="">Select a treatment</option>
-
-                    {treatmentOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Third row */}
-              <div className="grid gap-6 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="preferred_date" className={labelClass}>
-                    Preferred Date
-                  </label>
-
-                  <input
-                    type="date"
-                    id="preferred_date"
-                    name="preferred_date"
-                    value={form.preferred_date}
-                    onChange={handleChange}
-                    className={`${inputClass} cursor-pointer`}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="preferred_time" className={labelClass}>
-                    Preferred Time
-                  </label>
-
-                  <select
-                    id="preferred_time"
-                    name="preferred_time"
-                    value={form.preferred_time}
-                    onChange={handleChange}
-                    className={`${inputClass} cursor-pointer`}
-                  >
-                    <option value="">Select a time</option>
-
-                    {timeSlots.map((slot) => (
-                      <option key={slot} value={slot}>
-                        {slot}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className={labelClass}>
-                  Message
-                </label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  value={form.message}
+            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+              {/* Row 1: Name & Phone */}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <FormField
+                  label="Full Name"
+                  id="full_name"
+                  name="full_name"
+                  value={form.full_name}
                   onChange={handleChange}
-                  rows={2}
-                  className={`${inputClass} resize-none`}
-                  placeholder="Any questions or details about your visit"
+                  placeholder="Your full name"
+                  required
+                  error={errors.full_name}
+                />
+
+                <FormField
+                  label="Phone Number"
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="Your phone number"
+                  required
+                  error={errors.phone}
                 />
               </div>
 
-              {/* Submit */}
-              <div className="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-[250px] text-[10px] font-light leading-5 text-charcoal/35">
-                  We usually respond within one business day to confirm your
-                  appointment.
+              {/* Row 2: Email & Treatment */}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <FormField
+                  label="Email Address"
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="name@example.com"
+                  optional
+                />
+
+                <SelectField
+                  label="Treatment of Interest"
+                  id="treatment_interest"
+                  name="treatment_interest"
+                  value={form.treatment_interest}
+                  onChange={handleChange}
+                  options={treatmentOptions}
+                  placeholder="Select a treatment"
+                  optional
+                />
+              </div>
+
+              {/* Row 3: Date & Time */}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <FormField
+                  label="Preferred Date"
+                  id="preferred_date"
+                  name="preferred_date"
+                  type="date"
+                  value={form.preferred_date}
+                  onChange={handleChange}
+                  optional
+                />
+
+                <SelectField
+                  label="Preferred Time Slot"
+                  id="preferred_time"
+                  name="preferred_time"
+                  value={form.preferred_time}
+                  onChange={handleChange}
+                  options={timeSlots}
+                  placeholder="Select a time"
+                  optional
+                />
+              </div>
+
+              {/* Row 4: Message */}
+              <TextareaField
+                label="Message or Special Requests"
+                id="message"
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                rows={3}
+                placeholder="Any preferences, questions, or specific requirements..."
+                optional
+              />
+
+              {/* Action row */}
+              <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                <p className="max-w-[280px] text-[11px] font-light leading-relaxed text-spa-text-muted">
+                  We usually respond within one business day to confirm your appointment.
                 </p>
 
-                <button
+                <Button
                   type="submit"
+                  variant="primary"
+                  size="md"
                   disabled={status === 'loading'}
-                  className="group inline-flex min-h-[48px] items-center justify-center gap-4 bg-charcoal px-8 text-[10px] font-medium uppercase tracking-[0.25em] text-ivory transition-all duration-500 hover:bg-gold disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status === 'loading' && (
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   )}
-
                   <span>
-                    {status === 'loading' ? 'Sending...' : 'Send Enquiry'}
+                    {status === 'loading' ? 'Sending Request...' : 'Send Enquiry'}
                   </span>
-
                   {status !== 'loading' && (
                     <ArrowUpRight
                       size={15}
-                      strokeWidth={1}
-                      className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                      strokeWidth={1.5}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     />
                   )}
-                </button>
+                </Button>
               </div>
 
-              {/* Status messages */}
+              {/* Status Notices */}
               {status === 'success' && (
                 <motion.div
-                  className="flex items-start gap-3 border border-green-200 bg-green-50 p-4"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-700" />
-
-                  <p className="text-xs font-light leading-5 text-green-900">
-                    Thank you. Your enquiry has been recorded. We will contact
-                    you shortly to confirm availability.
-                  </p>
+                  <StatusNotice
+                    status="success"
+                    title="Enquiry Received"
+                    message="Thank you. Your enquiry has been recorded. Our concierge will contact you shortly to confirm your booking and schedule."
+                  />
                 </motion.div>
               )}
 
               {status === 'error' && (
                 <motion.div
-                  className="flex items-start gap-3 border border-red-200 bg-red-50 p-4"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-700" />
-
-                  <p className="text-xs font-light leading-5 text-red-900">
-                    Something went wrong. Please try again or contact us
-                    directly.
-                  </p>
+                  <StatusNotice
+                    status="error"
+                    title="Submission Notice"
+                    message="Something went wrong while submitting your enquiry. Please try again or reach out directly by phone or WhatsApp."
+                  />
                 </motion.div>
               )}
             </form>
           </motion.div>
 
-          {/* Contact Panel */}
+          {/* Right Aside: Deep Charcoal Concierge Desk */}
           <motion.aside
-            className="relative overflow-hidden bg-charcoal p-7 text-ivory sm:p-9 md:p-10 lg:col-span-4 lg:p-11"
-            initial={{ opacity: 0, x: 20 }}
+            className="flex flex-col justify-between bg-spa-charcoal p-6 sm:p-8 md:p-10 lg:col-span-4 lg:p-12 text-spa-ivory border-t lg:border-t-0 lg:border-l border-white/10"
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
-              duration: 0.8,
+              duration: 0.7,
               delay: 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            {/* Decorative number */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-5 -top-12 font-serif text-[15rem] font-light leading-none text-gold/[0.06]"
-            >
-              01
-            </div>
-
-            <div className="relative flex h-full flex-col">
-              {/* Panel heading */}
-              <div>
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="h-px w-7 bg-gold" />
-
-                  <span className="text-[9px] uppercase tracking-[0.3em] text-gold-light/70">
-                    Need help?
-                  </span>
-                </div>
-
-                <h3 className="max-w-[280px] font-serif text-3xl font-light leading-[1.15] tracking-[-0.03em] text-ivory md:text-4xl">
-                  Prefer to speak directly?
-                </h3>
-
-                <p className="mt-5 max-w-[310px] text-sm font-light leading-6 text-ivory/45">
-                  Our team is happy to help you choose a treatment or answer
-                  questions about your visit.
-                </p>
+            <div>
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-px w-6 bg-spa-gold" />
+                <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-spa-gold-light">
+                  Direct Assistance
+                </span>
               </div>
 
-              {/* Contact details */}
-              <div className="mt-10 space-y-6 border-t border-ivory/10 pt-7">
+              <h3 className="font-serif text-2xl sm:text-3xl font-light leading-snug tracking-tight text-spa-ivory">
+                Prefer personal attention?
+              </h3>
+
+              <p className="mt-4 text-xs sm:text-sm font-light leading-relaxed text-spa-text-light-secondary">
+                Our concierge is available to guide you through treatment options,
+                curate tailored packages, or address specific scheduling requests.
+              </p>
+
+              {/* Contact list */}
+              <div className="mt-8 space-y-5 border-t border-white/10 pt-6">
                 <a
                   href="tel:+910000000000"
-                  className="group flex items-start gap-4"
+                  className="group flex items-start gap-3.5 transition-colors"
                 >
-                  <Phone
-                    size={16}
-                    strokeWidth={1}
-                    className="mt-0.5 text-gold/80"
-                  />
-
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-spa-gold/30 bg-white/5 text-spa-gold group-hover:border-spa-gold group-hover:bg-spa-gold/10 transition-colors">
+                    <Phone size={13} strokeWidth={1.5} />
+                  </div>
                   <div>
-                    <span className="block text-[9px] uppercase tracking-[0.25em] text-gold-light/60">
-                      Phone
+                    <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-spa-gold-light">
+                      Telephone
                     </span>
-
-                    <span className="mt-2 block text-sm font-light text-ivory/75 transition-colors group-hover:text-gold-light">
+                    <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
                       [Phone number to be added]
                     </span>
                   </div>
@@ -513,20 +398,16 @@ export default function Booking() {
                   href="https://wa.me/910000000000"
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-start gap-4"
+                  className="group flex items-start gap-3.5 transition-colors"
                 >
-                  <MessageCircle
-                    size={16}
-                    strokeWidth={1}
-                    className="mt-0.5 text-gold/80"
-                  />
-
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-spa-gold/30 bg-white/5 text-spa-gold group-hover:border-spa-gold group-hover:bg-spa-gold/10 transition-colors">
+                    <MessageCircle size={13} strokeWidth={1.5} />
+                  </div>
                   <div>
-                    <span className="block text-[9px] uppercase tracking-[0.25em] text-gold-light/60">
-                      WhatsApp
+                    <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-spa-gold-light">
+                      WhatsApp Concierge
                     </span>
-
-                    <span className="mt-2 block text-sm font-light text-ivory/75 transition-colors group-hover:text-gold-light">
+                    <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
                       [WhatsApp number to be added]
                     </span>
                   </div>
@@ -534,54 +415,46 @@ export default function Booking() {
 
                 <a
                   href="mailto:hello@spaday.com"
-                  className="group flex items-start gap-4"
+                  className="group flex items-start gap-3.5 transition-colors"
                 >
-                  <Mail
-                    size={16}
-                    strokeWidth={1}
-                    className="mt-0.5 text-gold/80"
-                  />
-
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-spa-gold/30 bg-white/5 text-spa-gold group-hover:border-spa-gold group-hover:bg-spa-gold/10 transition-colors">
+                    <Mail size={13} strokeWidth={1.5} />
+                  </div>
                   <div>
-                    <span className="block text-[9px] uppercase tracking-[0.25em] text-gold-light/60">
-                      Email
+                    <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-spa-gold-light">
+                      Email Concierge
                     </span>
-
-                    <span className="mt-2 block text-sm font-light text-ivory/75 transition-colors group-hover:text-gold-light">
+                    <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
                       [Email to be added]
                     </span>
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4">
-                  <Clock3
-                    size={16}
-                    strokeWidth={1}
-                    className="mt-0.5 text-gold/80"
-                  />
-
+                <div className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-spa-gold/30 bg-white/5 text-spa-gold">
+                    <Clock3 size={13} strokeWidth={1.5} />
+                  </div>
                   <div>
-                    <span className="block text-[9px] uppercase tracking-[0.25em] text-gold-light/60">
-                      Opening Hours
+                    <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-spa-gold-light">
+                      Operating Hours
                     </span>
-
-                    <span className="mt-2 block text-sm font-light leading-6 text-ivory/75">
+                    <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80">
                       [Opening hours to be added]
                     </span>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Bottom panel link */}
-              <div className="mt-auto hidden border-t border-ivory/10 pt-7 lg:block">
-                <span className="text-[9px] uppercase tracking-[0.28em] text-ivory/25">
-                  SPA DAY · A quiet place to reconnect
-                </span>
-              </div>
+            {/* Bottom Brand Stamp */}
+            <div className="mt-10 border-t border-white/10 pt-6">
+              <span className="text-[10px] font-light uppercase tracking-[0.26em] text-spa-text-light-muted">
+                SPA DAY &middot; The Sanctuary of Stillness
+              </span>
             </div>
           </motion.aside>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
