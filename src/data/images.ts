@@ -1,4 +1,11 @@
 // Curated premium spa imagery — all from Pexels (license-free)
+import aromatherapyMassageImage from '../assets/aromatherapy-massage.png';
+import balineseMassageImage from '../assets/Balinese massage.png';
+import deepTissueImage from '../assets/deep tissue.png';
+import fullBodyScrubImage from '../assets/full body scrub.png';
+import gelFullBodyImage from '../assets/gel full body.png';
+import swedishMassageImage from '../assets/sweddish.png';
+import thaiMassageImage from '../assets/thai.png';
 
 export const heroImage =
   'https://images.pexels.com/photos/6560308/pexels-photo-6560308.jpeg?auto=compress&cs=tinysrgb&w=1920';
@@ -24,8 +31,7 @@ export const treatments: Treatment[] = [
       'A gentle, full-body massage using long, flowing strokes to ease tension and restore a sense of calm.',
     duration: '60 min',
     price: '[₹1700]',
-    image:
-      'src/assets/sweddish.png',
+    image: swedishMassageImage,
   },
   {
     name: 'Deep Tissue Massage',
@@ -33,8 +39,7 @@ export const treatments: Treatment[] = [
       'Focused pressure on deeper layers of muscle to release chronic tension and stiffness.',
     duration: '75 min',
     price: '[₹2000]',
-    image:
-      'src/assets/deep tissue.png',
+    image: deepTissueImage,
   },
   {
     name: 'Aroma Massage',
@@ -42,8 +47,7 @@ export const treatments: Treatment[] = [
       'A soothing massage paired with essential oils chosen to calm the mind and lift the senses.',
     duration: '60 min',
     price: '[₹1400]',
-    image:
-      'src/assets/aromatherapy-massage.png',
+    image: aromatherapyMassageImage,
   },
   {
     name: 'Full Body Scrub',
@@ -51,8 +55,7 @@ export const treatments: Treatment[] = [
       'A targeted treatment releasing built-up stress in the neck, shoulders, and scalp.',
     duration: '90 min',
     price: '[₹3500]',
-    image:
-      'src/assets/full body scrub.png',
+    image: fullBodyScrubImage,
   },
   {
     name: 'Gel Full Body Massage',
@@ -60,8 +63,7 @@ export const treatments: Treatment[] = [
       'A full-body exfoliation that leaves the skin soft, smooth, and gently renewed.',
     duration: '75 min',
     price: '[₹3000]',
-    image:
-      'src/assets/gel full body.png',
+    image: gelFullBodyImage,
   },
   {
     name: 'Couple Massage',
@@ -78,8 +80,7 @@ export const treatments: Treatment[] = [
       'Experience traditional Thai massage with assisted stretches and rhythmic pressure techniques that improve flexibility, release muscle tension, and restore balance.',
     duration: '90 min',
     price: '[₹3000]',
-    image:
-      'src/assets/thai.png',
+    image: thaiMassageImage,
   },
   {
     name: 'Balinese Massage',
@@ -87,8 +88,7 @@ export const treatments: Treatment[] = [
       'Experience the soothing art of Balinese massage with gentle stretches, deep pressure, and aromatic oils to ease tension and promote deep relaxation.',
     duration: '60 min',
     price: '[₹1700]',
-    image:
-      'src/assets/Balinese massage.png',
+    image: balineseMassageImage,
   },
 ];
 
