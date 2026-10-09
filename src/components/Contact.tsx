@@ -12,11 +12,12 @@ import {
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import SectionLabel from '@/components/ui/SectionLabel';
-import Button from '@/components/ui/Button';
-import { contactImage } from '@/data/images';
 
 const fullAddress =
   'Shop Office No. 101, N.M. Tower, 6/1/3, 209, Racecourse Road, Opposite Om Namkeen, 56 Shop, Indore, Madhya Pradesh, India.';
+const enquiryMessage =
+  'Hello SPA DAY, I would like to enquire about your spa treatments and availability. Please share the available options and booking details.';
+const enquiryUrl = `https://wa.me/918889456484?text=${encodeURIComponent(enquiryMessage)}`;
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -31,31 +32,26 @@ export default function Contact() {
     }
   };
 
-  const scrollTo = (href: string) => {
-    const target = document.querySelector(href);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   const contactItems = [
     {
       icon: Phone,
       label: 'Telephone',
-      value: '[Phone number to be added]',
+      value: '+91 8889456484',
     },
     {
       icon: MessageCircle,
       label: 'WhatsApp Concierge',
-      value: '[WhatsApp number to be added]',
+      value: '+91 8889456484',
     },
     {
       icon: Mail,
       label: 'Email Concierge',
-      value: '[Email to be added]',
+      value: 'spaday1212@gmail.com',
     },
     {
       icon: Clock,
       label: 'Operating Hours',
-      value: '[Opening hours to be added]',
+      value: '11:00 AM - 11:30 PM (Mon - Sun)',
     },
   ];
 
@@ -176,21 +172,22 @@ export default function Contact() {
 
             {/* Booking action */}
             <div>
-              <Button
-                variant="outline"
-                size="md"
-                onClick={() => scrollTo('#booking')}
+              <a
+                href={enquiryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2.5 border border-spa-charcoal/25 bg-transparent px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.20em] text-spa-charcoal transition-all duration-400 ease-[0.16,1,0.3,1] hover:border-spa-charcoal hover:bg-spa-charcoal hover:text-spa-ivory"
               >
                 <span>Reserve an Experience</span>
                 <ArrowRight
                   className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
                   strokeWidth={1.5}
                 />
-              </Button>
+              </a>
             </div>
           </motion.div>
 
-          {/* Right Column: Reception image with map placeholder */}
+          {/* Right Column: Interactive location map */}
           <motion.div
             className="relative min-h-[380px] lg:min-h-full overflow-hidden border border-spa-sand/80 shadow-[0_8px_32px_rgba(27,25,23,0.04)] lg:col-span-6"
             initial={{ opacity: 0, x: 20 }}
@@ -198,29 +195,14 @@ export default function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img
-              src={contactImage}
-              alt="SPA DAY reception sanctuary in Indore"
-              className="absolute inset-0 h-full w-full object-cover"
+            <iframe
+              title="SPA DAY location on Google Maps"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`}
+              className="absolute inset-0 h-full w-full border-0"
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
-            <div className="absolute inset-0 bg-spa-charcoal/50 backdrop-blur-[1px]" />
-
-            {/* Map placeholder card */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-spa-charcoal/60 text-spa-gold-light backdrop-blur-md mb-4">
-                <MapPin className="h-6 w-6" strokeWidth={1.25} />
-              </div>
-              <p className="font-serif text-xl sm:text-2xl font-light text-spa-ivory">
-                Racecourse Road, Indore
-              </p>
-              <p className="mt-2 text-xs font-light text-spa-text-light-secondary max-w-xs leading-relaxed">
-                [Google Maps interactive location will be embedded here]
-              </p>
-              <span className="mt-4 text-[10px] font-medium uppercase tracking-[0.24em] text-spa-gold-light/80 border border-spa-gold/30 px-3.5 py-1.5 backdrop-blur-sm">
-                Near 56 Shop
-              </span>
-            </div>
           </motion.div>
         </div>
       </Container>

@@ -25,7 +25,7 @@ export const treatments: Treatment[] = [
     duration: '60 min',
     price: '[₹1700]',
     image:
-      'https://images.pexels.com/photos/6187418/pexels-photo-6187418.jpeg?auto=compress&cs=tinysrgb&w=900',
+      'src/assets/sweddish.png',
   },
   {
     name: 'Deep Tissue Massage',
@@ -34,43 +34,61 @@ export const treatments: Treatment[] = [
     duration: '75 min',
     price: '[₹2000]',
     image:
-      'https://images.pexels.com/photos/6187652/pexels-photo-6187652.jpeg?auto=compress&cs=tinysrgb&w=900',
+      'src/assets/deep tissue.png',
   },
   {
-    name: 'Aromatherapy Massage',
+    name: 'Aroma Massage',
     description:
       'A soothing massage paired with essential oils chosen to calm the mind and lift the senses.',
     duration: '60 min',
     price: '[₹1400]',
     image:
-      'https://images.pexels.com/photos/6560252/pexels-photo-6560252.jpeg?auto=compress&cs=tinysrgb&w=900',
+      'src/assets/aromatherapy-massage.png',
   },
   {
-    name: 'Head & Shoulder Therapy',
+    name: 'Full Body Scrub',
     description:
       'A targeted treatment releasing built-up stress in the neck, shoulders, and scalp.',
-    duration: '45 min',
-    price: '[₹1200]',
+    duration: '90 min',
+    price: '[₹3500]',
     image:
-      'https://images.pexels.com/photos/9146381/pexels-photo-9146381.jpeg?auto=compress&cs=tinysrgb&w=900',
+      'src/assets/full body scrub.png',
   },
   {
-    name: 'Body Polish',
+    name: 'Gel Full Body Massage',
     description:
       'A full-body exfoliation that leaves the skin soft, smooth, and gently renewed.',
-    duration: '50 min',
-    price: '[Add Price]',
+    duration: '75 min',
+    price: '[₹3000]',
     image:
-      'https://images.pexels.com/photos/6560273/pexels-photo-6560273.jpeg?auto=compress&cs=tinysrgb&w=900',
+      'src/assets/gel full body.png',
   },
   {
-    name: 'Couple Spa',
+    name: 'Couple Massage',
     description:
       'A shared wellness experience designed for two, in a private and tranquil setting.',
-    duration: '60 min',
+    duration: '75 min',
     price: '[₹3000]',
     image:
       'https://images.pexels.com/photos/7365434/pexels-photo-7365434.jpeg?auto=compress&cs=tinysrgb&w=900',
+  },
+  {
+    name: 'Thai Massage',
+    description:
+      'Experience traditional Thai massage with assisted stretches and rhythmic pressure techniques that improve flexibility, release muscle tension, and restore balance.',
+    duration: '90 min',
+    price: '[₹3000]',
+    image:
+      'src/assets/thai.png',
+  },
+  {
+    name: 'Balinese Massage',
+    description:
+      'Experience the soothing art of Balinese massage with gentle stretches, deep pressure, and aromatic oils to ease tension and promote deep relaxation.',
+    duration: '60 min',
+    price: '[₹1700]',
+    image:
+      'src/assets/Balinese massage.png',
   },
 ];
 
@@ -102,7 +120,7 @@ export const galleryImages: GalleryImage[] = [
     span: 'tall',
   },
   {
-    url: 'https://images.pexels.com/photos/6560252/pexels-photo-6560252.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    url: 'https://images.pexels.com/photos/6560252/pexels-photo-6560252.jpeg?auto=compress&cs=tinysrgb&w=120',
     alt: 'Aromatherapy items arranged on a wooden table',
     span: 'normal',
   },

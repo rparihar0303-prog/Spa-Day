@@ -1,14 +1,12 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Loader2,
   ArrowUpRight,
   Phone,
   MessageCircle,
   Mail,
   Clock3,
 } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
 import Container from '@/components/ui/Container';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -16,7 +14,6 @@ import {
   FormField,
   SelectField,
   TextareaField,
-  StatusNotice,
 } from '@/components/ui/FormField';
 
 interface FormData {
@@ -54,19 +51,18 @@ const timeSlots = [
 const treatmentOptions = [
   'Swedish Massage',
   'Deep Tissue Massage',
-  'Aromatherapy',
-  'Head & Shoulder Therapy',
-  'Body Polish',
+  'Aroma Massage',
+  'Thai Massage',
+  'Balinese Massage',
   'Couple Spa',
+  'Full Body Scrub',
+  'Gel Full Body Massage',
   'Not sure yet',
 ];
 
 export default function Booking() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<
-    'idle' | 'loading' | 'success' | 'error'
-  >('idle');
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -105,31 +101,29 @@ export default function Booking() {
     }
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     if (!validate()) return;
 
-    setStatus('loading');
+    const message = `Hello SPA DAY,
 
-    try {
-      const { error } = await supabase.from('enquiries').insert({
-        full_name: form.full_name.trim(),
-        phone: form.phone.trim(),
-        email: form.email.trim() || null,
-        preferred_date: form.preferred_date || null,
-        preferred_time: form.preferred_time || null,
-        treatment_interest: form.treatment_interest || null,
-        message: form.message.trim() || null,
-      });
+I would like to enquire about a spa treatment.
 
-      if (error) throw error;
+Name: ${form.full_name.trim()}
+Phone: ${form.phone.trim()}
+Email: ${form.email.trim() || 'Not provided'}
+Treatment: ${form.treatment_interest || 'Not selected'}
+Preferred Date: ${form.preferred_date || 'Not specified'}
+Preferred Time: ${form.preferred_time || 'Not specified'}
+Message: ${form.message.trim() || 'None'}
 
-      setStatus('success');
-      setForm(initialForm);
-    } catch {
-      setStatus('error');
-    }
+Please share the availability and booking details.
+
+Thank you.`;
+
+    const whatsappUrl = `https://wa.me/918889456484?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -297,52 +291,15 @@ export default function Booking() {
                   type="submit"
                   variant="primary"
                   size="md"
-                  disabled={status === 'loading'}
                 >
-                  {status === 'loading' && (
-                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  )}
-                  <span>
-                    {status === 'loading' ? 'Sending Request...' : 'Send Enquiry'}
-                  </span>
-                  {status !== 'loading' && (
-                    <ArrowUpRight
-                      size={15}
-                      strokeWidth={1.5}
-                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  )}
+                  <span>Send Enquiry</span>
+                  <ArrowUpRight
+                    size={15}
+                    strokeWidth={1.5}
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
                 </Button>
               </div>
-
-              {/* Status Notices */}
-              {status === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <StatusNotice
-                    status="success"
-                    title="Enquiry Received"
-                    message="Thank you. Your enquiry has been recorded. Our concierge will contact you shortly to confirm your booking and schedule."
-                  />
-                </motion.div>
-              )}
-
-              {status === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <StatusNotice
-                    status="error"
-                    title="Submission Notice"
-                    message="Something went wrong while submitting your enquiry. Please try again or reach out directly by phone or WhatsApp."
-                  />
-                </motion.div>
-              )}
             </form>
           </motion.div>
 
@@ -378,7 +335,7 @@ export default function Booking() {
               {/* Contact list */}
               <div className="mt-8 space-y-5 border-t border-white/10 pt-6">
                 <a
-                  href="tel:+910000000000"
+                  href="tel:+918889456484"
                   className="group flex items-start gap-3.5 transition-colors"
                 >
                   <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-spa-gold/30 bg-white/5 text-spa-gold group-hover:border-spa-gold group-hover:bg-spa-gold/10 transition-colors">
@@ -389,13 +346,13 @@ export default function Booking() {
                       Telephone
                     </span>
                     <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
-                      [Phone number to be added]
+                      +91 8889456484
                     </span>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/910000000000"
+                  href="https://wa.me/918889456484"
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-start gap-3.5 transition-colors"
@@ -408,7 +365,7 @@ export default function Booking() {
                       WhatsApp Concierge
                     </span>
                     <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
-                      [WhatsApp number to be added]
+                      +91 8889456484
                     </span>
                   </div>
                 </a>
@@ -425,7 +382,7 @@ export default function Booking() {
                       Email Concierge
                     </span>
                     <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
-                      [Email to be added]
+                      spaday1212@gmail.com
                     </span>
                   </div>
                 </a>
@@ -439,7 +396,7 @@ export default function Booking() {
                       Operating Hours
                     </span>
                     <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80">
-                      [Opening hours to be added]
+                      11:00 AM - 11:30 PM (Mon - Sun)
                     </span>
                   </div>
                 </div>

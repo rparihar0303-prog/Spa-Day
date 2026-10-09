@@ -231,10 +231,7 @@ export default function Treatments() {
                 <motion.img
                   src={selected.image}
                   alt={selected.name}
-                  className="h-full w-full object-cover"
-                  initial={{ scale: 1.05 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.8, ease }}
+                  className="h-full w-full object-contain object-center"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-spa-charcoal/60 via-transparent to-spa-charcoal/20" />
@@ -303,10 +300,13 @@ export default function Treatments() {
                   </div>
 
                   {/* Modal CTA */}
-                  <Button
-                    variant="primary"
-                    onClick={scrollToBooking}
-                    className="w-full mt-2"
+                  <a
+                    href={`https://wa.me/918889456484?text=${encodeURIComponent(
+                      `Hello SPA DAY, I would like to enquire about the ${selected.name}. Please share the availability and booking details.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex w-full items-center justify-center gap-2.5 border border-spa-charcoal bg-spa-charcoal px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.20em] text-spa-ivory shadow-sm transition-all duration-400 ease-[0.16,1,0.3,1] hover:border-spa-gold hover:bg-spa-gold hover:text-spa-ivory mt-2"
                   >
                     <CalendarDays size={14} strokeWidth={1.3} />
                     <span>Book This Treatment</span>
@@ -315,7 +315,7 @@ export default function Treatments() {
                       strokeWidth={1.3}
                       className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     />
-                  </Button>
+                  </a>
                 </div>
               </div>
             </motion.div>

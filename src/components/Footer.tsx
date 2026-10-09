@@ -39,7 +39,7 @@ export default function Footer() {
               className="mt-2 inline-flex items-center gap-2 text-xs font-light uppercase tracking-[0.2em] text-spa-text-light-muted hover:text-spa-gold-light transition-colors"
             >
               <Instagram className="h-4 w-4 text-spa-gold" strokeWidth={1.5} />
-              <span>[Instagram to be added]</span>
+              <span>spa_day_wellness</span>
             </a>
           </div>
 
@@ -78,8 +78,8 @@ export default function Footer() {
             </address>
 
             <div className="mt-2 flex flex-col gap-1 text-xs sm:text-sm font-light text-spa-text-light-muted">
-              <span>[Phone number to be added]</span>
-              <span>[Email to be added]</span>
+              <span>+91 8889456484</span>
+              <span>spaday1212@gmail.com</span>
             </div>
           </div>
         </div>

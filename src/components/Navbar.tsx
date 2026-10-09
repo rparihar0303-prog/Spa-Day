@@ -3,6 +3,81 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { navItems } from '@/data/navigation';
 
+function SpaDayLogo({ colorClass }: { colorClass: string }) {
+  const lotusSvg = (
+    <svg
+      width="46"
+      height="38"
+      viewBox="0 0 58 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className="h-[38px] w-[46px]"
+    >
+      <path
+        d="M29 2C24 8 21 14 21 20C21 27 25 32 29 35C33 32 37 27 37 20C37 14 34 8 29 2Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M29 35C22 31 16 25 16 18C16 13 18 9 21 6C25 12 28 18 29 25"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M29 35C36 31 42 25 42 18C42 13 40 9 37 6C33 12 30 18 29 25"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 29C14 27 8 22 7 16C6 12 8 9 11 7C15 11 19 16 21 22"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M37 29C44 27 50 22 51 16C52 12 50 9 47 7C43 11 39 16 37 22"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 31C14 38 21 41 29 41C37 41 44 38 50 31"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M14 36C19 39 24 41 29 41C34 41 39 39 44 36"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
+  return (
+    <div
+      className={`flex flex-col items-center font-serif text-[23px] font-medium tracking-[0.16em] ${colorClass}`}
+    >
+      <div className="text-inherit">{lotusSvg}</div>
+
+      <div className="mt-1">
+        <span>SPA</span>
+        <span className="ml-3">DAY</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -115,24 +190,14 @@ export default function Navbar() {
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="group relative flex shrink-0 items-baseline gap-2"
+              className="group relative flex shrink-0 items-center"
               aria-label="SPA DAY Home"
             >
-              <span
-                className={`font-serif text-[23px] font-medium tracking-[0.16em] transition-colors duration-400 ${
+              <SpaDayLogo
+                colorClass={`transition-colors duration-400 ${
                   scrolled ? 'text-spa-charcoal' : 'text-white'
                 }`}
-              >
-                SPA
-              </span>
-
-              <span
-                className={`text-[11px] font-light uppercase tracking-[0.3em] transition-colors duration-400 ${
-                  scrolled ? 'text-spa-gold-dark' : 'text-spa-gold-light'
-                }`}
-              >
-                Day
-              </span>
+              />
 
               {/* Logo hover underline */}
               <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-spa-gold transition-all duration-400 group-hover:w-full" />

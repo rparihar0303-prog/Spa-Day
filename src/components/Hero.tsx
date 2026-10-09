@@ -66,10 +66,10 @@ export default function Hero() {
               delay: 0.4,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="mb-6 flex items-center gap-3"
+            className="mb-6 flex w-fit max-w-full items-center gap-3 rounded-full border border-spa-gold-light/35 bg-spa-charcoal/35 px-4 py-2 backdrop-blur-md sm:px-5"
           >
-            <span className="h-px w-8 bg-spa-gold-light/70" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-spa-gold-light">
+            <span className="h-px w-6 shrink-0 bg-spa-gold-light sm:w-8" />
+            <span className="max-w-full break-words text-[13px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-spa-gold-light sm:text-[16px] sm:tracking-[0.24em]">
               Spa Day · Indore, Madhya Pradesh
             </span>
           </motion.div>
