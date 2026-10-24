@@ -17,7 +17,7 @@ const fullAddress =
   'Shop Office No. 101, N.M. Tower, 6/1/3, 209, Racecourse Road, Opposite Om Namkeen, 56 Shop, Indore, Madhya Pradesh, India.';
 const enquiryMessage =
   'Hello SPA DAY, I would like to enquire about your spa treatments and availability. Please share the available options and booking details.';
-const enquiryUrl = `https://wa.me/918889456484?text=${encodeURIComponent(enquiryMessage)}`;
+const enquiryUrl = `https://wa.me/918889450894?text=${encodeURIComponent(enquiryMessage)}`;
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -36,12 +36,12 @@ export default function Contact() {
     {
       icon: Phone,
       label: 'Telephone',
-      value: '+91 8889456484',
+      value: '+91 8889450894',
     },
     {
       icon: MessageCircle,
       label: 'WhatsApp Concierge',
-      value: '+91 8889456484',
+      value: '+91 8889450894',
     },
     {
       icon: Mail,

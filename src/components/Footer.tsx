@@ -78,7 +78,7 @@ export default function Footer() {
             </address>
 
             <div className="mt-2 flex flex-col gap-1 text-xs sm:text-sm font-light text-spa-text-light-muted">
-              <span>+91 8889456484</span>
+              <span>+91 8889450894</span>
               <span>spaday1212@gmail.com</span>
             </div>
           </div>

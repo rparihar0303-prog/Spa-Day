@@ -301,7 +301,7 @@ export default function Treatments() {
 
                   {/* Modal CTA */}
                   <a
-                    href={`https://wa.me/918889456484?text=${encodeURIComponent(
+                    href={`https://wa.me/918889450894?text=${encodeURIComponent(
                       `Hello SPA DAY, I would like to enquire about the ${selected.name}. Please share the availability and booking details.`
                     )}`}
                     target="_blank"

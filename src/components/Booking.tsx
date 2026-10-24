@@ -122,7 +122,7 @@ Please share the availability and booking details.
 
 Thank you.`;
 
-    const whatsappUrl = `https://wa.me/918889456484?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/918889450894?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -335,7 +335,7 @@ Thank you.`;
               {/* Contact list */}
               <div className="mt-8 space-y-5 border-t border-white/10 pt-6">
                 <a
-                  href="tel:+918889456484"
+                  href="tel:+918889450894"
                   className="group flex items-start gap-3.5 transition-colors"
                 >
                   <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-spa-gold/30 bg-white/5 text-spa-gold group-hover:border-spa-gold group-hover:bg-spa-gold/10 transition-colors">
@@ -346,13 +346,13 @@ Thank you.`;
                       Telephone
                     </span>
                     <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
-                      +91 8889456484
+                      +91 8889450894
                     </span>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/918889456484"
+                  href="https://wa.me/918889450894"
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-start gap-3.5 transition-colors"
@@ -365,7 +365,7 @@ Thank you.`;
                       WhatsApp Concierge
                     </span>
                     <span className="mt-0.5 block text-xs sm:text-sm font-light text-spa-ivory/80 group-hover:text-spa-gold-light transition-colors">
-                      +91 8889456484
+                      +91 8889450894
                     </span>
                   </div>
                 </a>
